@@ -6,7 +6,7 @@ const FilmList = ({ films }) => {
   return (
     <Row>
       {films.map((films) => (
-        <FilmCard key={films.id} films={films} />
+        <FilmCard key={films.episode_id} films={films} />
       ))}
     </Row>
   );

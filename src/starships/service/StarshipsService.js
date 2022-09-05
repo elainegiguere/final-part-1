@@ -1,12 +1,11 @@
-class FilmsService {
+class StarshipsService {
 	constructor() { }
 
-	url = "https://swapi.dev/api/films/";
+	url = "https://swapi.dev/api/starships/";
 
-	
 
 	// méthode pour aller chercher tout les films
-	async getFilms() {
+	async getStarships() {
 		try {
 			const response = await fetch(this.url);
 			if (!response.ok) throw new Error(response.statusText);
@@ -19,9 +18,9 @@ class FilmsService {
 			return  [];
 			
 		}
-	}
+    }
 
-	async getFilmById(id) {
+	async getStarshipById(id) {
 		try {
 			const response = await fetch(`${this.url}/${id}`);
 			if (!response.ok) throw new Error(response.statusText);
@@ -32,7 +31,7 @@ class FilmsService {
 			return {};
 		}
 	}
-	
 }
 
-export default FilmsService;
+
+export default StarshipsService;

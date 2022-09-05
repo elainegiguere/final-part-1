@@ -2,13 +2,15 @@ import React from "react";
 import Card from "../../components/Card";
 import BCard from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
-
+import {Link} from "react-router-dom";
 const DEFAULT_IMAGE_POSITION = "top";
 
 const FilmCard = ({ films }) => {
   return (
     <Col className="my-3">
+      <Link to={`/films/${films.episode_id}`}>
       <Card>
+
         <BCard.Header as="small">{films.title}</BCard.Header>
          <BCard.Body>
           <BCard.Title>{films.episode_id}</BCard.Title>
@@ -16,6 +18,7 @@ const FilmCard = ({ films }) => {
           <BCard.Title>directed by: {films.director}</BCard.Title>
         </BCard.Body>
       </Card>
+      </Link>
     </Col>
   );
 };

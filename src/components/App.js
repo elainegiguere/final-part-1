@@ -1,15 +1,18 @@
 
+import { BrowserRouter, Routes, Route} from "react-router-dom";
 import Films from '../films/components/Films';
-import Container from "react-bootstrap/Container";
+import IndividualFilm from "../films/components/IndividualFilm";
 
 
 function App() {
   return (
-    <div className="App">
-      <Container>
-      <Films/>
-    </Container>
-    </div>
+    <BrowserRouter>
+    <Routes>
+      <Route path="/" element={< Films />}/>
+      <Route path="/films/:id" element={< IndividualFilm />}/>
+
+    </Routes>
+    </BrowserRouter>
   );
 }
 
