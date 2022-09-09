@@ -1,29 +1,29 @@
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
-import FilmService from "../service/FilmsService";
-import FilmList from "./FilmList";
+import VehiculesService from "../service/VehiculesService";
+import VehiculeList from "./VehiculeList";
 
-const filmsService = new FilmService();
+const vehiculesService = new VehiculesService();
 
-const Films = () => {
+const Vehicules = () => {
   const [data, setData] = useState([]);
 
-  const getFilms = async () => {
-    const response = await filmsService.getFilms();
-    const films = response.results;
-    console.log('films', films);
+  const getVehicules = async () => {
+    const response = await vehiculesService.getVehicules();
+    const vehicules = response.results;
+    console.log('vehicules', vehicules);
     setData(
-      films);
+      vehicules);
   };
 
   useEffect(() => {
-    getFilms();
+    getVehicules();
   }, []);
 
 
 
-  return <FilmList films={data} />;
+  return <VehiculeList vehicules={data} />;
 };
 
-export default Films;
+export default Vehicules;

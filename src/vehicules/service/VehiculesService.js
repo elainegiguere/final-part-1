@@ -1,11 +1,11 @@
 class VehiculesService {
 	constructor() { }
 
-	url = "https://swapi.dev/api/vehicules/";
+	url = "https://swapi.dev/api/vehicules";
 
 
-	// méthode pour aller chercher tout les films
-	async getStarships() {
+	// méthode pour aller chercher tout les véhicules
+	async getVehicules() {
 		try {
 			const response = await fetch(this.url);
 			if (!response.ok) throw new Error(response.statusText);
@@ -20,7 +20,7 @@ class VehiculesService {
 		}
     }
 
-	async getStarshipById(id) {
+	async getVehiculesById(id) {
 		try {
 			const response = await fetch(`${this.url}/${id}`);
 			if (!response.ok) throw new Error(response.statusText);

@@ -5,6 +5,10 @@ import useGetData from "../../useGetData";
 import FilmsService from "../service/FilmsService";
 import PeoplesService from "../../peoples/service/PeoplesService";
 import PeopleList from "../../peoples/components/PeopleList";
+import StarshipsService from "../../starships/service/StarshipsService";
+import StarshipList from "../../starships/components/StarshipList";
+import VehiculesService from "../../vehicules/service/VehiculesService";
+import VehiculeList from "../../vehicules/components/VehiculeList";
 
 import {useParams} from "react-router-dom"
 import FilmCrawl from "./FilmCrawl";
@@ -14,10 +18,11 @@ import Col from "react-bootstrap/Col";
 
 const filmsService = new FilmsService();
 const peoplesService = new PeoplesService();
+const starshipsService = new StarshipsService();
+const vehiculesService = new VehiculesService();
 
     const IndividualFilm = () => {
     const [filmId, setFilmId] = useState(null); 
-    const [peopleId, setPeopleId]=useState([]);
     const params = useParams();
    
  // Pour les films
@@ -28,14 +33,19 @@ const peoplesService = new PeoplesService();
     };
 
 // Pour les peoples
-    const Peoples = useGetData (PeoplesService.getPeoplesById.bind(PeoplesService),peopleId.peoples);
+    const peoples = useGetData (peoplesService.getPeopleById.bind(peoplesService),filmId?.characters);
+    console.log(peoples); 
+
+// Pour les starships
+    const starships = useGetData (starshipsService.getStarshipById.bind(starshipsService),filmId?.starships);
+    console.log(starships); 
+
+// Pour les vehicules
+    const vehicules = useGetData (vehiculesService.getVehiculesById.bind(vehiculesService),filmId?.vehicules);
+    console.log(vehicules); 
 
     useEffect(()=> {
         getFilmById();
-    }, [params]);
-
-    useEffect(()=> {
-        setPeopleId();
     }, [params]);
  
 
@@ -44,9 +54,11 @@ const peoplesService = new PeoplesService();
  <>
     <Col className="my-3">
        <Card>
-         <FilmCrawl/>
+         <FilmCrawl films={filmId} />
          <BCard.Body>
-          <PeopleList/>
+          <PeopleList peoples={peoples}/>
+          <StarshipList starships={starships}/>
+          <VehiculeList vehicules={vehicules}/>
         </BCard.Body>
       </Card>
     </Col>

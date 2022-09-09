@@ -1,7 +1,7 @@
 class StarshipsService {
 	constructor() { }
 
-	url = "https://swapi.dev/api/starships/";
+	url = "https://swapi.dev/api/starships";
 
 
 	// méthode pour aller chercher tout les films

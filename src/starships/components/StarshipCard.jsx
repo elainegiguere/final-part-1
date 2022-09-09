@@ -6,15 +6,16 @@ import {Link} from "react-router-dom";
 import getUrlId from "../../getUrlId";
 const DEFAULT_IMAGE_POSITION = "top";
 
-const VehiculeCard = ({ vehicules }) => {
+const StarshipCard = ({ starships }) => {
   return (
     <Col className="my-3">
-      <Link to={`/vehicules/${getUrlId(vehicules.id)}`}>
+      <Link to={`/starships/${getUrlId(starships.url)}`}>
       <Card>
-        <BCard.Header as="small">Vehicule name : {vehicules.name}</BCard.Header>
+
+        <BCard.Header as="small">Starship name : {starships.name}</BCard.Header>
          <BCard.Body>
-          <BCard.Text>{vehicules.model}</BCard.Text>
-          <BCard.Text>{vehicules.manufacturer}</BCard.Text>
+          <BCard.Text>{starships.model}</BCard.Text>
+          <BCard.Text>manufactured by:{starships.manufacturer}</BCard.Text>
         </BCard.Body>
       </Card>
       </Link>
@@ -22,4 +23,4 @@ const VehiculeCard = ({ vehicules }) => {
   );
 };
 
-export default VehiculeCard;
+export default StarshipCard;

@@ -1,7 +1,7 @@
 class PeoplesService {
 	constructor() { }
 
-	url = "https://swapi.dev/api/people/";
+	url = "https://swapi.dev/api/people";
 
 
 	// méthode pour aller chercher tout les films
@@ -10,6 +10,7 @@ class PeoplesService {
 			const response = await fetch(this.url);
 			if (!response.ok) throw new Error(response.statusText);
 			const data = await response.json();
+			console.log(data);
 
 			return data;
 		} catch (e) {
@@ -20,6 +21,7 @@ class PeoplesService {
 		}
     }
 
+	
 	async getPeopleById(id) {
 		try {
 			const response = await fetch(`${this.url}/${id}`);

@@ -2,13 +2,15 @@ import React from "react";
 import Card from "../../components/Card";
 import BCard from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
+import getUrlId from "../../getUrlId";
 import {Link} from "react-router-dom";
+
 const DEFAULT_IMAGE_POSITION = "top";
 
 const FilmCard = ({ films }) => {
   return (
     <Col className="my-3">
-      <Link to={`/films/${films.episode_id}`}>
+      <Link to={`/films/${getUrlId(films.url)}`}>
       <Card>
 
         <BCard.Header as="small">{films.title}</BCard.Header>
