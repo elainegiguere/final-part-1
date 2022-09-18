@@ -1,29 +1,14 @@
 import React from "react";
-import { useEffect } from "react";
-import { useState } from "react";
-import FilmsService from "../service/FilmsService";
 import FilmList from "../components/FilmList";
+import useFetchFilms from "../hooks/useFetchFilms";
 
-const filmsService = new FilmsService();
+
 
 const Films = () => {
-  const [data, setData] = useState([]);
+  const data = useFetchFilms();
+  console.log (data);
+  return <FilmList films={data}/>;
 
-  const getFilms = async () => {
-    const response = await filmsService.getFilms();
-    const films = response.results;
-    console.log('films', films);
-    setData(
-      films);
-  };
-
-  useEffect(() => {
-    getFilms();
-  }, []);
-
-
-
-  return <FilmList films={data} />;
 };
 
 export default Films;
